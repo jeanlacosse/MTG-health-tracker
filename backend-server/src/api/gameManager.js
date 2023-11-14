@@ -30,6 +30,7 @@ const joinGame = (io, socket, gameCode, playerName) => {
             playerName: playerName,
             health: 40, // Starting health for each player
         };
+
         socket.emit('gameJoined', { gameCode, state: games[gameCode] });
         io.to(gameCode).emit('playerJoined', {
             playerId: socket.id,
@@ -76,5 +77,6 @@ module.exports = {
     joinGame,
     updateHealth,
     updateTurn,
-    disconnect
+    disconnect,
+    games
 };
